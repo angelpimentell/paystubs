@@ -20,5 +20,5 @@ from django.urls import path
 from payments.views.payment_view import PaymentView
 
 urlpatterns = [
-    path('process/', PaymentView.as_view()),
+    path('process', PaymentView.as_view()),
 ]
