@@ -8,7 +8,7 @@ class ProcessUnitTest(APITestCase):
     def test_process_with_valid_data(self):
         # Arrange
         csv_content = b"full_name,email,position,health_discount_amount,social_discount_amount,taxes_discount_amount,other_discount_amount,gross_salary,gross_payment,net_payment,period"
-        csv_content += b"\nAngel,angelpimentelcontact@gmail.com,Developer,1,2,3,4,5,6,7,2025-03-31"
+        csv_content += b"\nAngel,angelpimentelcontact@example.com,Developer,1,2,3,4,5,6,7,2025-03-31"
 
         # Act
         response = self.client.post(
@@ -23,7 +23,7 @@ class ProcessUnitTest(APITestCase):
     def test_process_with_invalid_data(self):
         # Arrange
         csv_content = b"full_name,email,position,health_discount_amount,social_discount_amount,taxes_discount_amount,other_discount_amount,gross_salary,gross_payment,net_payment,period"
-        csv_content += b"\nAngel,angelpimentelcontact@gmail.com,Developer,AAAAA,2,EEE3,4,5,6,7,20121225-03-31"
+        csv_content += b"\nAngel,angelpimentelcontact@example.com,Developer,AAAAA,2,EEE3,4,5,6,7,20121225-03-31"
 
         # Act
         response = self.client.post(
@@ -39,7 +39,7 @@ class ProcessUnitTest(APITestCase):
         # Arrange
         self.url = "/process?country=do&credentials=wronguser+admin&company=default"
         csv_content = b"full_name,email,position,health_discount_amount,social_discount_amount,taxes_discount_amount,other_discount_amount,gross_salary,gross_payment,net_payment,period"
-        csv_content += b"\nAngel,angelpimentelcontact@gmail.com,Developer,1,2,3,4,5,6,7,2025-03-31"
+        csv_content += b"\nAngel,angelpimentelcontact@example.com,Developer,1,2,3,4,5,6,7,2025-03-31"
 
         # Act
         response = self.client.post(
@@ -55,7 +55,7 @@ class ProcessUnitTest(APITestCase):
         # Arrange
         self.url = "/process?country=wrongcontry&credentials=admin+admin&company=wrongdefault"
         csv_content = b"full_name,email,position,health_discount_amount,social_discount_amount,taxes_discount_amount,other_discount_amount,gross_salary,gross_payment,net_payment,period"
-        csv_content += b"\nAngel,angelpimentelcontact@gmail.com,Developer,1,2,3,4,5,6,7,2025-03-31"
+        csv_content += b"\nAngel,angelpimentelcontact@example.com,Developer,1,2,3,4,5,6,7,2025-03-31"
 
         # Act
         response = self.client.post(
