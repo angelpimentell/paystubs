@@ -14,7 +14,7 @@ from paystubs.helpers import check_template_exists
 load_dotenv()
 
 
-class PaymentView(APIView):
+class ProcessView(APIView):
 
     def post(self, request, format=None):
         credentials = request.GET.get('credentials', None)
