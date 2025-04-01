@@ -1,24 +1,39 @@
+from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import csv
 import io
+import os
 from django.shortcuts import render
 
 import pdfkit
 from datetime import datetime
+from dotenv import load_dotenv
+from paystubs.helpers import check_template_exists
+
+load_dotenv()
 
 
 class PaymentView(APIView):
 
     def post(self, request, format=None):
-        country = request.GET.get('country', 'do')
         credentials = request.GET.get('credentials', None)
+        username = credentials.split(" ")[0]
+        password = credentials.split(" ")[1]
+
+        if os.getenv("DJANGO_USERNAME") != username or os.getenv("DJANGO_PASSWORD") != password:
+            return HttpResponse(status=401)
+
+        country = request.GET.get('country', 'do')
         company_name = request.GET.get('company', 'default')
+        template_name = f"{company_name}_{country}.html"
+
+        if not check_template_exists(template_name):
+            return Response(data={"message": "Wrong country or company."}, status=400)
 
         decoded_file = io.StringIO(request.body.decode('utf-8'))
         csv_reader = csv.DictReader(decoded_file)
         emails_sends = []
-        template_name = f"{company_name}_{country}.html"
 
         for row in csv_reader:
             gross_salary = float(row['gross_salary'])
