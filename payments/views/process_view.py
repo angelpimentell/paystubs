@@ -73,7 +73,9 @@ class ProcessView(APIView):
                     }
                 ).content.decode("utf-8")
 
-                pdf_bytes = pdfkit.from_string(html_string, False)
+                pdf_bytes = pdfkit.from_string(html_string, False, options={
+                    'enable-local-file-access': ''
+                })
                 pdf_buffer = io.BytesIO(pdf_bytes)
                 pdf_buffer.seek(0)
 
