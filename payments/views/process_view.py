@@ -5,6 +5,7 @@ import csv
 import io
 import os
 from django.shortcuts import render
+from django.core.mail import EmailMessage
 
 import pdfkit
 from datetime import datetime
@@ -72,10 +73,18 @@ class ProcessView(APIView):
                     }
                 ).content.decode("utf-8")
 
-                pdfkit.from_string(html_string, row['email'].replace(".", "_") + ".pdf")
+                pdf_bytes = pdfkit.from_string(html_string, False)
+                pdf_buffer = io.BytesIO(pdf_bytes)
+                pdf_buffer.seek(0)
 
-                # ACTION: Send email
+                email = EmailMessage(
+                    subject="PAYMENT",
+                    body="We inform you that your payment has been made, please review the attached file.",
+                    to=["recipient@example.com"],
+                )
 
+                email.attach("payment.pdf", pdf_buffer.getvalue(), "application/pdf")
+                email.send()
                 emails_sends.append({
                     'email': row['email'],
                     'datetime': datetime.now()
