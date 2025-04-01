@@ -29,7 +29,7 @@ class PaymentView(APIView):
         template_name = f"{company_name}_{country}.html"
 
         if not check_template_exists(template_name):
-            return Response(data={"message": "Wrong country or company."}, status=400)
+            template_name = "default_do.html"
 
         decoded_file = io.StringIO(request.body.decode('utf-8'))
         csv_reader = csv.DictReader(decoded_file)
