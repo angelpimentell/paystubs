@@ -80,7 +80,7 @@ class ProcessView(APIView):
                 email = EmailMessage(
                     subject="PAYMENT",
                     body="We inform you that your payment has been made, please review the attached file.",
-                    to=["recipient@example.com"],
+                    to=[row['email']],
                 )
 
                 email.attach("payment.pdf", pdf_buffer.getvalue(), "application/pdf")
