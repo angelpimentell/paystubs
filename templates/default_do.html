@@ -24,7 +24,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg" height="40px">
             <div style="display: block; padding-left: 10px">
                 <h3>Comprobante de pago {{ period }}</h3>
-                <h3>{{ comprobante_de_pago }}</h3>
+                <h3>{{ full_name }}</h3>
                 <h3>{{ title }}</h3>
             </div>
         </div>
@@ -35,20 +35,18 @@
             <div style="float: left; width: 48%; padding-top: 60px;">
                 <p>Salario Bruto: {{ gross_salary }}</p>
                 <p>Pago Bruto: {{ gross_payment }}</p>
-                <p>Pago Neto: {{ net_payment }}</p>
+                <p style="padding-top: 79px"><strong>Pago Neto:</strong> {{ net_payment }}</p>
             </div>
 
             <!-- Right div (floats to the right) -->
             <div style="float: right; width: 48%; padding-top: 20px; text-align: right;">
                 <h3>Descuentos</h3>
-                <p>SFS: {{ gross_payment }}</p>
-                <p>AFP: {{ gross_payment }}</p>
-                <p>ISR: {{ gross_payment }}</p>
-                <p>Otros: {{ gross_payment }}</p>
+                <p>SFS: {{ social_discount_amount }}</p>
+                <p>AFP: {{ health_discount_amount }}</p>
+                <p>ISR: {{ taxes_discount_amount }}</p>
+                <p>Otros: {{ other_discount_amount }}</p>
+                <p><strong>Total:</strong> {{ total_discounts }}</p>
             </div>
-        </div>
-        <div>
-            <p>Total: {{ gross_payment }}</p>
         </div>
     </div>
 </div>
