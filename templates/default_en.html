@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Django Template</title>
+</head>
+<style>
+    h3 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        padding-block-start: 0;
+        padding-block-end: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+    }
+</style>
+<body>
+<div style="max-width: 700px;">
+    <div style="display: flex;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Ikea_logo.svg" height="40px">
+        <div style="display: block;">
+            <h3>Comprobante de pago {{ period }}</h3>
+            <h3>{{ comprobante_de_pago }}</h3>
+            <h3>{{ title }}</h3>
+        </div>
+    </div>
+    <div style="display: flex;">
+        <div style="display: flex; flex-direction: column; padding-top: 20px">
+            <span>Salario Bruto: {{ gross_salary }}</span>
+            <span>Pago Bruto: {{ gross_payment }}</span>
+            <span style="padding-top: 60px">Pago Neto: {{ net_payment }}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; margin-left: auto;">
+            <h3>Descuentos</h3>
+            <span>SFS: {{ gross_payment }}</span>
+            <span>AFP: {{ gross_payment }}</span>
+            <span>ISR: {{ gross_payment }}</span>
+            <span>Otros: {{ gross_payment }}</span>
+            <span>Total: {{ gross_payment }}</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
