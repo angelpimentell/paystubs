@@ -1,7 +1,7 @@
 # Paystubs
 
 ## Description
-System to send email with PDF from CSV with payments  
+System to send emails with PDF from a CSV of payment information  
 
 ## Installation
 ```sh
@@ -11,6 +11,11 @@ pip install -r requirements.txt
 
 # Set enviroment variables
 cp .env.example .env 
+```
+
+## Image folder
+```sh
+./static
 ```
 
 ## Run tests
@@ -23,7 +28,3 @@ python manage.py test
 python manage.py runserver localhost:3000 
 ```
 
-### Image folder
-```sh
-./static
-```
