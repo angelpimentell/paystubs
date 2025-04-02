@@ -9,10 +9,8 @@ from django.core.mail import EmailMessage
 
 import pdfkit
 from datetime import datetime
-from dotenv import load_dotenv
-from paystubs.helpers import check_template_exists
 
-load_dotenv()
+from paystubs.helpers import check_template_exists
 
 
 class ProcessView(APIView):
@@ -104,6 +102,12 @@ class ProcessView(APIView):
                     'email': row['email'],
                     'datetime': None,
                     'message': 'Wrong values from CSV.'
+                })
+            except:
+                emails_sends.append({
+                    'email': row['email'],
+                    'datetime': None,
+                    'message': 'Unexpected error.'
                 })
 
         return Response(emails_sends)

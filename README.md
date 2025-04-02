@@ -7,8 +7,10 @@ System to send email with PDF from CSV with payments
 ```sh
 git clone https://github.com/angelpimentell/paystubs.git
 cd paystubs
-cp .env.example .env
 pip install -r requirements.txt
+
+# Set enviroment variables
+cp .env.example .env 
 ```
 
 ## Run tests
