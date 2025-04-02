@@ -1,7 +1,7 @@
 # Paystubs
 
 ## Description
-System to send emails with PDF from CSV with payments  
+System to send emails with PDF from CSV with payment information  
 
 ## Installation
 ```sh
