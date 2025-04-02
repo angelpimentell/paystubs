@@ -18,7 +18,7 @@ load_dotenv()
 class ProcessView(APIView):
 
     def post(self, request, format=None):
-        credentials = request.GET.get('credentials', None)
+        credentials = request.GET.get('credentials', ' ')
         username = credentials.split(" ")[0]
         password = credentials.split(" ")[1]
 
