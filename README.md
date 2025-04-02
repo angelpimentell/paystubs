@@ -13,6 +13,11 @@ pip install -r requirements.txt
 cp .env.example .env 
 ```
 
+## Image folder
+```sh
+./static
+```
+
 ## Run tests
 ```sh
 python manage.py test
@@ -23,7 +28,3 @@ python manage.py test
 python manage.py runserver localhost:3000 
 ```
 
-### Image folder
-```sh
-./static
-```
