@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from payments.views.process_view import ProcessView
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('process', ProcessView.as_view()),
 ]

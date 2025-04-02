@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago</title>
+</head>
+<style>
+    h3 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        padding-block-start: 0;
+        padding-block-end: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+    }
+</style>
+<body>
+<div>
+    <div style="display: flex;">
+        <div style="display: block; display: -webkit-box;">
+            <img src="http://localhost:3000/static/atdev.jpg" height="80px">
+            <div style="display: block; padding-left: 10px">
+                <p>Comprobante de pago {{ period }}</p>
+                <p>{{ full_name }}</p>
+                <p>{{ title }}</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div style="display: block; overflow: hidden;">
+            <!-- Left div (floats to the left) -->
+            <div style="float: left; width: 48%; padding-top: 60px;">
+                <p>Salario Bruto: {{ gross_salary }}</p>
+                <p>Pago Bruto: {{ gross_payment }}</p>
+                <p style="padding-top: 79px"><strong>Pago Neto:</strong> {{ net_payment }}</p>
+            </div>
+
+            <!-- Right div (floats to the right) -->
+            <div style="float: right; width: 48%; padding-top: 20px; text-align: right;">
+                <h3>Descuentos</h3>
+                <p>SFS: {{ social_discount_amount }}</p>
+                <p>AFP: {{ health_discount_amount }}</p>
+                <p>ISR: {{ taxes_discount_amount }}</p>
+                <p>Otros: {{ other_discount_amount }}</p>
+                <p><strong>Total:</strong> {{ total_discounts }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
